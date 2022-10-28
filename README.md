@@ -13,3 +13,5 @@ This project is of interest to me because it is an opportunity for me to create 
 - **As a user, I want to be able to extrapolate data from the inputted purchase order data.**
 - **As a user, I want to be able to add product performance to a product performance list.**
 - **As a user, I want to be able to extrapolate product performance data from the inputted data.**
+- **As a user, I want to be able to save product details, purchase orders, and product performance data to a file.**
+- **As a user, I want to be able to load product details, purchase orders, and product performance data from a file.**
