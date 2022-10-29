@@ -1,6 +1,10 @@
 package model;
 
-public class ProductPerformance {
+import org.json.JSONObject;
+import persistence.Writable;
+
+//Modelled after https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.
+public class ProductPerformance implements Writable {
 
     private String asin;
     private int orderID;
@@ -56,5 +60,19 @@ public class ProductPerformance {
     // EFFECTS: Returns the net profit.
     public double getNetProfit() {
         return netProfit;
+    }
+
+    // EFFECTS: returns this as JSON object
+    @Override
+    public JSONObject toJson() {
+
+        JSONObject json = new JSONObject();
+        json.put("asin", asin);
+        json.put("order id", orderID);
+        json.put("qtySold", qtySold);
+        json.put("net revenue", netRev);
+        json.put("cpu", cpu);
+        json.put("net profit", netProfit);
+        return json;
     }
 }

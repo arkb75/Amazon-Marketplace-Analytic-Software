@@ -1,9 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class PurchaseOrdersList {
+//Modelled after https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.
+public class PurchaseOrdersList implements Writable {
 
     private List<PurchaseOrders> purchaseOrders = new ArrayList<>();
 
@@ -51,5 +56,25 @@ public class PurchaseOrdersList {
     // EFFECTS: Returns the list purchaseOrders.
     public List getOrderDetails() {
         return purchaseOrders;
+    }
+
+    // EFFECTS: returns this as JSON objects
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", "state");
+        json.put("purchaseOrders", purchaseOrdersToJson());
+        return json;
+    }
+
+    // EFFECTS: returns purchaseOrders in this purchaseOrdersList as a JSON array
+    private JSONArray purchaseOrdersToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (PurchaseOrders p : purchaseOrders) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 }

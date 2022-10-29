@@ -1,6 +1,10 @@
 package model;
 
-public class PurchaseOrders {
+import org.json.JSONObject;
+import persistence.Writable;
+
+//Modelled after https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.
+public class PurchaseOrders implements Writable {
 
     private String asin;
     private String deliveryETA;
@@ -56,5 +60,19 @@ public class PurchaseOrders {
     // EFFECTS: Returns the cost per unit.
     public double getCpu() {
         return cpu;
+    }
+
+    // EFFECTS: returns this as JSON object
+    @Override
+    public JSONObject toJson() {
+
+        JSONObject json = new JSONObject();
+        json.put("asin", asin);
+        json.put("delivery eta", deliveryETA);
+        json.put("order id", orderID);
+        json.put("qty", qty);
+        json.put("net cost", netCost);
+        json.put("cpu", cpu);
+        return json;
     }
 }

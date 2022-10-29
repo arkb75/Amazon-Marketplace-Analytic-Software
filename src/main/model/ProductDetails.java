@@ -1,6 +1,10 @@
 package model;
 
-public class ProductDetails {
+import org.json.JSONObject;
+import persistence.Writable;
+
+//Modelled after https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.
+public class ProductDetails implements Writable {
 
     private String asin;
     private String category;
@@ -56,5 +60,19 @@ public class ProductDetails {
     // EFFECTS: Returns the referral fee percentage.
     public double getRefFeePcntg() {
         return refFeePcntg;
+    }
+
+    // EFFECTS: returns this as JSON object
+    @Override
+    public JSONObject toJson() {
+
+        JSONObject json = new JSONObject();
+        json.put("asin", asin);
+        json.put("category", category);
+        json.put("product name", productName);
+        json.put("list price", listPrice);
+        json.put("ref fee", refFee);
+        json.put("ref fee %", refFeePcntg);
+        return json;
     }
 }

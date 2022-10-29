@@ -1,13 +1,26 @@
 package ui;
 
 import model.*;
+import persistence.DataLoader;
+import persistence.DataWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Menus {
 
+    private static final String pdPath = "./data/productdetails.json";
+    private static final String poPath = "./data/purchaseorders.json";
+    private static final String ppPath = "./data/productperformance.json";
+    private DataLoader pdLoader = new DataLoader(pdPath);
+    private DataLoader poLoader = new DataLoader(poPath);
+    private DataLoader ppLoader = new DataLoader(ppPath);
+    private DataWriter pdWriter = new DataWriter(pdPath);
+    private DataWriter poWriter = new DataWriter(poPath);
+    private DataWriter ppWriter = new DataWriter(ppPath);
     Scanner in = new Scanner(System.in);
 
     ProductDetailsList manageOne = new ProductDetailsList();
@@ -32,6 +45,8 @@ public class Menus {
             System.out.println("1. Product Details");
             System.out.println("2. Purchase Orders");
             System.out.println("3. Product Performance");
+            System.out.println("4. Load data");
+            System.out.println("5. Save Data");
 
             main = menuSelection();
         }
@@ -59,9 +74,67 @@ public class Menus {
             case 3:
                 productPerformanceSelection();
                 break;
+
+            case 4:
+                load();
+                break;
+
+            case 5:
+                save();
+                break;
         }
 
         return main;
+    }
+
+    // EFFECTS: Loads data for each list from their respective files.
+    // MODIFIES: this
+    private void load() {
+
+        try {
+
+            if (pdLoader.has("productDetails")) {
+
+                manageOne = pdLoader.readProductDetails();
+                productDetails = manageOne.getProductDetails();
+            }
+
+            if (poLoader.has("purchaseOrders")) {
+
+                manageTwo = poLoader.readPurchaseOrders();
+                purchaseOrders = manageTwo.getOrderDetails();
+            }
+
+            if (ppLoader.has("productPerformance")) {
+
+                manageThree = ppLoader.readProductPerformance();
+                productPerformance = manageThree.getOrderDetails();
+            }
+
+            System.out.println("Loaded");
+        } catch (IOException e) {
+            System.out.println("Unable to read from file");
+        }
+    }
+
+    // EFFECTS: Saves data for each list to their respective files.
+    // MODIFIES: this
+    private void save() {
+
+        try {
+            pdWriter.open();
+            pdWriter.writeProductDetails(manageOne);
+            pdWriter.close();
+            poWriter.open();
+            poWriter.writePurchaseOrders(manageTwo);
+            poWriter.close();
+            ppWriter.open();
+            ppWriter.writeProductPerformance(manageThree);
+            ppWriter.close();
+            System.out.println("Saved");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file");
+        }
     }
 
     // EFFECTS: Calls the productDetails and productDetailsMenu methods in a loop.
