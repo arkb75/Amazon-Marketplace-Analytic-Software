@@ -51,4 +51,10 @@ class PurchaseOrdersListTest {
         purchaseOrdersList.add("test", "test1", 1, 500, 300);
         assertEquals(purchaseOrdersList.getOrderDetails(), purchaseOrdersList.getOrderDetails());
     }
+
+    @Test
+    void testToJSon() {
+
+        assertTrue(purchaseOrdersList.toJson().has("purchaseOrders"));
+    }
 }

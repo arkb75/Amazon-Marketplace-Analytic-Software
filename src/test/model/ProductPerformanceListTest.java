@@ -51,4 +51,10 @@ class ProductPerformanceListTest {
         productPerformanceList.add("test", 1, 150, 800, 5);
         assertEquals(productPerformanceList.getOrderDetails(), productPerformanceList.getOrderDetails());
     }
+
+    @Test
+    void testToJSon() {
+
+        assertTrue(productPerformanceList.toJson().has("productPerformance"));
+    }
 }

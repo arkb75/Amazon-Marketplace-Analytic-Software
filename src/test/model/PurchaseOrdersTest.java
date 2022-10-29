@@ -49,4 +49,10 @@ class PurchaseOrdersTest {
 
         assertEquals(purchaseOrders.getNetCost(), 300);
     }
+
+    @Test
+    void testToJSon() {
+
+        assertTrue(purchaseOrders.toJson().has("purchaseOrders"));
+    }
 }

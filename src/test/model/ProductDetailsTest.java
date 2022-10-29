@@ -49,4 +49,10 @@ class ProductDetailsTest {
 
         assertEquals(productDetails.getRefFeePcntg(), 5);
     }
+
+    @Test
+    void testToJSon() {
+
+        assertTrue(productDetails.toJson().has("productDetails"));
+    }
 }

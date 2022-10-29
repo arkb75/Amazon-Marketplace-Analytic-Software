@@ -49,4 +49,10 @@ class ProductPerformanceTest {
 
         assertEquals(productPerformance.getCpu(), 5);
     }
+
+    @Test
+    void testToJSon() {
+
+        assertTrue(productPerformance.toJson().has("productPerformance"));
+    }
 }

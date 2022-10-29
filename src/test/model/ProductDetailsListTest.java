@@ -51,4 +51,10 @@ class ProductDetailsListTest {
         productDetailsList.add("test", "test1", "test2", 50, 5);
         assertEquals(productDetailsList.getProductDetails(), productDetailsList.getProductDetails());
     }
+
+    @Test
+    void testToJSon() {
+
+        assertTrue(productDetailsList.toJson().has("productDetails"));
+    }
 }
