@@ -46,6 +46,7 @@ public class ProductDetailsGUI {
         heading.setFont(new Font("Calibri", Font.BOLD, 35));
         heading.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         view.addActionListener(chooseAction);
+        add.addActionListener(chooseAction);
         back.addActionListener(chooseAction);
 
         frame.add(panel);
@@ -64,8 +65,11 @@ public class ProductDetailsGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(view)) {
-                System.out.println("View");
                 new PDView();
+                frame.dispose();
+            }
+            if (e.getSource().equals(add)) {
+                new PDAdd();
                 frame.dispose();
             }
             if (e.getSource().equals(back)) {

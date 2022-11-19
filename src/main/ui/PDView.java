@@ -116,7 +116,6 @@ public class PDView extends MainMenu {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(load)) {
-                System.out.println("Load");
                 load();
                 checkProductDetails();
             }
@@ -124,7 +123,7 @@ public class PDView extends MainMenu {
                 search();
             }
             if (e.getSource().equals(back)) {
-                new MainMenu();
+                new ProductDetailsGUI();
                 frame.dispose();
             }
         }
