@@ -1,7 +1,7 @@
 package ui;
 
 public class Main {
-    // EFFECTS: Creates a new menus object and calls the mainMenu method using it.
+    // EFFECTS: Instantiates a new menu object.
     public static void main(String[] args) {
 
         //Menus menus = new Menus();

@@ -1,11 +1,4 @@
 {
     "name": "state",
-    "purchaseOrders": [{
-        "qty": 4,
-        "delivery eta": "4",
-        "cpu": 1,
-        "asin": "4",
-        "net cost": 4,
-        "order id": 4
-    }]
+    "purchaseOrders": []
 }

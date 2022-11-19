@@ -45,11 +45,15 @@ public class MainMenu {
     protected JButton save;
     private JLabel heading;
 
+    // EFFECTS: Creates JFrame, JPanel, and Elements.
+    // MODIFIES: this.
     public MainMenu() {
+
         panel = new JPanel();
         frame = new JFrame();
         panel.setBorder(BorderFactory.createEmptyBorder());
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
         load = new JButton("Load");
         save = new JButton("Save");
         productDetailsButton = new JButton("Product Details");
@@ -58,6 +62,24 @@ public class MainMenu {
         heading = new JLabel("Main Menu");
         heading.setFont(new Font("Calibri", Font.BOLD, 35));
         heading.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+
+        setElements();
+
+        panel.add(Box.createVerticalGlue());
+        panel.add(heading);
+        panel.add(productDetailsButton);
+        panel.add(productPerformanceButton);
+        panel.add(purchaseOrdersButton);
+        panel.add(Box.createVerticalStrut(600));
+        frame.add(panel);
+        frame.setBounds(100,100,700,700);
+        frame.setVisible(true);
+    }
+
+    // EFFECTS: Sets elements.
+    // MODIFIES: this.
+    private void setElements() {
+
         load.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         load.setMinimumSize(new Dimension(200, 25));
         load.setPreferredSize(new Dimension(200, 25));
@@ -81,31 +103,23 @@ public class MainMenu {
         productDetailsButton.addActionListener(chooseSubmenu);
         productPerformanceButton.addActionListener(chooseSubmenu);
         purchaseOrdersButton.addActionListener(chooseSubmenu);
-
-        panel.add(Box.createVerticalGlue());
-        panel.add(heading);
-        panel.add(productDetailsButton);
-        panel.add(productPerformanceButton);
-        panel.add(purchaseOrdersButton);
-        panel.add(Box.createVerticalStrut(600));
-        frame.add(panel);
-        frame.setBounds(100,100,700,700);
-        frame.setVisible(true);
     }
 
+    // EFFECTS: Handles button input.
     ActionListener chooseSubmenu = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(productDetailsButton)) {
-                System.out.println("Product Details");
-                new ProductDetailsGUI();
+                new SubMenuGUI("Product Details");
                 frame.dispose();
-            } else if (e.getSource().equals(productPerformanceButton)) {
-                System.out.println("Product Performance");
-                //frame.dispose();
-            } else if (e.getSource().equals(purchaseOrdersButton)) {
-                System.out.println("Purchase Orders");
-                //frame.dispose();
+            }
+            if (e.getSource().equals(productPerformanceButton)) {
+                new SubMenuGUI("Product Performance");
+                frame.dispose();
+            }
+            if (e.getSource().equals(purchaseOrdersButton)) {
+                new SubMenuGUI("Purchase Orders");
+                frame.dispose();
             }
         }
     };
@@ -142,7 +156,7 @@ public class MainMenu {
 
     // EFFECTS: Saves data for each list to their respective files.
     // MODIFIES: this
-    private void save() {
+    protected void save() {
 
         try {
             pdWriter.open();

@@ -1,11 +1,4 @@
 {
     "name": "state",
-    "productDetails": [{
-        "product name": "5",
-        "ref fee": 0.25,
-        "list price": 5,
-        "asin": "5",
-        "category": "5",
-        "ref fee %": 5
-    }]
+    "productDetails": []
 }

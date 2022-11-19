@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PDAdd extends MainMenu {
+public class PPAdd extends MainMenu {
 
     private JPanel panel;
     private JFrame frame;
@@ -14,33 +14,33 @@ public class PDAdd extends MainMenu {
     private JButton submit;
     private JButton save;
     private JButton back;
+    JTextField orderIDIn;
     JTextField asinIn;
-    JTextField catIn;
-    JTextField pnameIn;
-    JTextField lpriceIn;
-    JTextField refpcntgIn;
+    JTextField qtysoldIn;
+    JTextField nrevIn;
+    JTextField cpuIn;
 
     // EFFECTS: Creates JFrame, JPanel, and Elements.
     // MODIFIES: this.
-    public PDAdd() {
+    public PPAdd() {
 
         setBase();
         setButtons();
 
         setAsinIn("ASIN");
-        setcatIn("Category");
-        setPnameIn("Product Name");
-        setLpriceIn("List Price");
-        setRefpcntgIn("Referral Fee %");
+        setOrderIDIn("Order ID");
+        setQtysoldIn("Quantity Sold");
+        setNrevIn("Net Revenue");
+        setCpuIn("Cost Per Unit");
 
         frame.add(panel);
         panel.add(Box.createVerticalGlue());
         panel.add(heading);
+        panel.add(orderIDIn);
         panel.add(asinIn);
-        panel.add(catIn);
-        panel.add(pnameIn);
-        panel.add(lpriceIn);
-        panel.add(refpcntgIn);
+        panel.add(qtysoldIn);
+        panel.add(nrevIn);
+        panel.add(cpuIn);
         panel.add(error);
         panel.add(submit);
         panel.add(save);
@@ -106,52 +106,52 @@ public class PDAdd extends MainMenu {
         asinIn.setMaximumSize(new Dimension(200, 25));
     }
 
-    // EFFECTS: Creates Category textbox.
+    // EFFECTS: Creates Order ID textbox.
     // MODIFIES: this.
-    private void setcatIn(String name) {
+    private void setOrderIDIn(String name) {
 
-        catIn = new JTextField(name);
-        catIn.setFont(new Font("Calibri", Font.PLAIN, 20));
-        catIn.setAlignmentX(JTextField.CENTER_ALIGNMENT);
-        catIn.setMinimumSize(new Dimension(200, 25));
-        catIn.setPreferredSize(new Dimension(200, 25));
-        catIn.setMaximumSize(new Dimension(200, 25));
+        orderIDIn = new JTextField(name);
+        orderIDIn.setFont(new Font("Calibri", Font.PLAIN, 20));
+        orderIDIn.setAlignmentX(JTextField.CENTER_ALIGNMENT);
+        orderIDIn.setMinimumSize(new Dimension(200, 25));
+        orderIDIn.setPreferredSize(new Dimension(200, 25));
+        orderIDIn.setMaximumSize(new Dimension(200, 25));
     }
 
-    // EFFECTS: Creates Product Name textbox.
+    // EFFECTS: Creates QTY Sold textbox.
     // MODIFIES: this.
-    private void setPnameIn(String name) {
+    private void setQtysoldIn(String name) {
 
-        pnameIn = new JTextField(name);
-        pnameIn.setFont(new Font("Calibri", Font.PLAIN, 20));
-        pnameIn.setAlignmentX(JTextField.CENTER_ALIGNMENT);
-        pnameIn.setMinimumSize(new Dimension(200, 25));
-        pnameIn.setPreferredSize(new Dimension(200, 25));
-        pnameIn.setMaximumSize(new Dimension(200, 25));
+        qtysoldIn = new JTextField(name);
+        qtysoldIn.setFont(new Font("Calibri", Font.PLAIN, 20));
+        qtysoldIn.setAlignmentX(JTextField.CENTER_ALIGNMENT);
+        qtysoldIn.setMinimumSize(new Dimension(200, 25));
+        qtysoldIn.setPreferredSize(new Dimension(200, 25));
+        qtysoldIn.setMaximumSize(new Dimension(200, 25));
     }
 
-    // EFFECTS: Creates List Price textbox.
+    // EFFECTS: Creates Net Revenue textbox.
     // MODIFIES: this.
-    private void setLpriceIn(String name) {
+    private void setNrevIn(String name) {
 
-        lpriceIn = new JTextField(name);
-        lpriceIn.setFont(new Font("Calibri", Font.PLAIN, 20));
-        lpriceIn.setAlignmentX(JTextField.CENTER_ALIGNMENT);
-        lpriceIn.setMinimumSize(new Dimension(200, 25));
-        lpriceIn.setPreferredSize(new Dimension(200, 25));
-        lpriceIn.setMaximumSize(new Dimension(200, 25));
+        nrevIn = new JTextField(name);
+        nrevIn.setFont(new Font("Calibri", Font.PLAIN, 20));
+        nrevIn.setAlignmentX(JTextField.CENTER_ALIGNMENT);
+        nrevIn.setMinimumSize(new Dimension(200, 25));
+        nrevIn.setPreferredSize(new Dimension(200, 25));
+        nrevIn.setMaximumSize(new Dimension(200, 25));
     }
 
-    // EFFECTS: Creates Referral Fee % textbox.
+    // EFFECTS: Creates Cost Per Unit textbox.
     // MODIFIES: this.
-    private void setRefpcntgIn(String name) {
+    private void setCpuIn(String name) {
 
-        refpcntgIn = new JTextField(name);
-        refpcntgIn.setFont(new Font("Calibri", Font.PLAIN, 20));
-        refpcntgIn.setAlignmentX(JTextField.CENTER_ALIGNMENT);
-        refpcntgIn.setMinimumSize(new Dimension(200, 25));
-        refpcntgIn.setPreferredSize(new Dimension(200, 25));
-        refpcntgIn.setMaximumSize(new Dimension(200, 25));
+        cpuIn = new JTextField(name);
+        cpuIn.setFont(new Font("Calibri", Font.PLAIN, 20));
+        cpuIn.setAlignmentX(JTextField.CENTER_ALIGNMENT);
+        cpuIn.setMinimumSize(new Dimension(200, 25));
+        cpuIn.setPreferredSize(new Dimension(200, 25));
+        cpuIn.setMaximumSize(new Dimension(200, 25));
     }
 
     // EFFECTS: Handles button input.
@@ -159,7 +159,7 @@ public class PDAdd extends MainMenu {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(back)) {
-                new SubMenuGUI("Product Details");
+                new SubMenuGUI("Product Performance");
                 frame.dispose();
             }
             if (e.getSource().equals(submit)) {
@@ -177,13 +177,13 @@ public class PDAdd extends MainMenu {
 
         try {
 
-            asin = asinIn.getText();
-            String category = catIn.getText();
-            String productName = pnameIn.getText();
-            int listPrice = Integer.parseInt(lpriceIn.getText());
-            int refFeePcntg = Integer.parseInt(refpcntgIn.getText());
+            String asinThree = asinIn.getText();
+            orderIDTwo = Integer.parseInt(orderIDIn.getText());
+            int qtySold = Integer.parseInt(qtysoldIn.getText());
+            int netRev = Integer.parseInt(nrevIn.getText());
+            int cpu = Integer.parseInt(cpuIn.getText());
 
-            manageOne.add(asin, category, productName, listPrice, refFeePcntg);
+            manageThree.add(asinThree, orderIDTwo, qtySold, netRev, cpu);
             error.setVisible(false);
         } catch (NumberFormatException e) {
 
