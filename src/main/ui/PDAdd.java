@@ -183,7 +183,7 @@ public class PDAdd extends MainMenu {
             int listPrice = Integer.parseInt(lpriceIn.getText());
             int refFeePcntg = Integer.parseInt(refpcntgIn.getText());
 
-            manageOne.add(asin, category, productName, listPrice, refFeePcntg);
+            manageOne.add(asin, category, productName, listPrice, refFeePcntg, false);
             error.setVisible(false);
         } catch (NumberFormatException e) {
 

@@ -10,11 +10,15 @@ import persistence.Writable;
 public class ProductDetailsList implements Writable {
 
     private List<ProductDetails> productDetails = new ArrayList<>();
+    private EventLog eventLog = EventLog.getInstance();
 
     // MODIFIES: this
     // EFFECTS: Adds a new product details object to the productDetails array list, with a set of given values.
-    public void add(String asin, String category, String productName, int listPrice, int refFeePcntg) {
+    public void add(String asin, String category, String productName, int listPrice, int refFeePcntg, boolean loaded) {
         productDetails.add(new ProductDetails(asin, category, productName, listPrice, refFeePcntg));
+        if (!loaded) {
+            eventLog.logEvent(new Event("Added product to product details list."));
+        }
     }
 
     // REQUIRES: index != -1
@@ -28,9 +32,11 @@ public class ProductDetailsList implements Writable {
         if (index != -1) {
 
             productDetails.remove(index);
+            eventLog.logEvent(new Event("Removed product from product details list."));
             return true;
         }
 
+        eventLog.logEvent(new Event("Failed to remove product from product details list."));
         return false;
     }
 

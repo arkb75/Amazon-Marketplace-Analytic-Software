@@ -244,7 +244,7 @@ public class Menus {
             System.out.print("Referral Fee %: ");
             int refFeePcntg = inOne.nextInt();
 
-            manageOne.add(asin, category, productName, listPrice, refFeePcntg);
+            manageOne.add(asin, category, productName, listPrice, refFeePcntg, false);
         } catch (InputMismatchException e) {
 
             System.out.println("Invalid input.");
@@ -389,7 +389,7 @@ public class Menus {
             System.out.print("Delivery ETA: ");
             String deliveryETA = inTwo.next();
 
-            manageTwo.add(asinTwo, deliveryETA, orderIDOne, qty, netCost);
+            manageTwo.add(asinTwo, deliveryETA, orderIDOne, qty, netCost, false);
         } catch (InputMismatchException e) {
 
             System.out.println("Invalid input.");
@@ -538,7 +538,7 @@ public class Menus {
             System.out.print("Cost Per Unit: ");
             double cpu = inThree.nextInt();
 
-            manageThree.add(asinThree, orderIDTwo, qtySold, netRev, cpu);
+            manageThree.add(asinThree, orderIDTwo, qtySold, netRev, cpu, false);
         } catch (InputMismatchException e) {
 
             System.out.println("Invalid input.");

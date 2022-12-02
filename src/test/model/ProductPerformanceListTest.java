@@ -16,7 +16,7 @@ class ProductPerformanceListTest {
     @Test
     void testAdd() {
 
-        productPerformanceList.add("test", 1, 150, 800, 5);
+        productPerformanceList.add("test", 1, 150, 800, 5, false);
         assertEquals(1, productPerformanceList.getOrder(1).getOrderID());
     }
 
@@ -24,7 +24,7 @@ class ProductPerformanceListTest {
     void testRemove() {
 
         assertFalse(productPerformanceList.remove(1));
-        productPerformanceList.add("test", 1, 150, 800, 5);
+        productPerformanceList.add("test", 1, 150, 800, 5, false);
         assertFalse(productPerformanceList.remove(5));
         assertTrue(productPerformanceList.remove(1));
     }
@@ -33,7 +33,7 @@ class ProductPerformanceListTest {
     void testGetOrderIndex() {
 
         assertEquals(productPerformanceList.getOrderIndex(1), -1);
-        productPerformanceList.add("test", 1, 150, 800, 5);
+        productPerformanceList.add("test", 1, 150, 800, 5, false);
         assertEquals(productPerformanceList.getOrderIndex(1), 0);
         assertEquals(productPerformanceList.getOrderIndex(5), -1);
     }
@@ -41,14 +41,14 @@ class ProductPerformanceListTest {
     @Test
     void testGetOrder() {
 
-        productPerformanceList.add("test", 1, 150, 800, 5);
+        productPerformanceList.add("test", 1, 150, 800, 5, false);
         assertEquals(productPerformanceList.getOrder(1).getOrderID(), 1);
     }
 
     @Test
     void testGetOrderDetails() {
 
-        productPerformanceList.add("test", 1, 150, 800, 5);
+        productPerformanceList.add("test", 1, 150, 800, 5, false);
         assertEquals(productPerformanceList.getOrderDetails(), productPerformanceList.getOrderDetails());
     }
 

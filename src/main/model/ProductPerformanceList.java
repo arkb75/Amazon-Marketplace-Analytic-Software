@@ -10,11 +10,15 @@ import java.util.List;
 public class ProductPerformanceList implements Writable {
 
     private List<ProductPerformance> productPerformance = new ArrayList<>();
+    private EventLog eventLog = EventLog.getInstance();
 
     // MODIFIES: this
     // EFFECTS: Adds a new product performance object to the productPerformance array list, with a set of given values.
-    public void add(String asin, int orderID, int qtySold, double netRev, double cpu) {
+    public void add(String asin, int orderID, int qtySold, double netRev, double cpu, boolean loaded) {
         productPerformance.add(new ProductPerformance(asin, orderID, qtySold, netRev, cpu));
+        if (!loaded) {
+            eventLog.logEvent(new Event("Added product performance to product performance list."));
+        }
     }
 
     // REQUIRES: index != -1
@@ -28,9 +32,11 @@ public class ProductPerformanceList implements Writable {
         if (index != -1) {
 
             productPerformance.remove(index);
+            eventLog.logEvent(new Event("Removed product performance from product performance list."));
             return true;
         }
 
+        eventLog.logEvent(new Event("Failed to remove product performance from product performance list."));
         return false;
     }
 

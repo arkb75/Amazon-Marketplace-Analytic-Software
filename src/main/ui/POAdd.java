@@ -183,7 +183,7 @@ public class POAdd extends MainMenu {
             int netCost = Integer.parseInt(ncostIn.getText());
             String deliveryETA = detaIn.getText();
 
-            manageTwo.add(asinTwo, deliveryETA, orderIDOne, qty, netCost);
+            manageTwo.add(asinTwo, deliveryETA, orderIDOne, qty, netCost, false);
             error.setVisible(false);
         } catch (NumberFormatException e) {
 

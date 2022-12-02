@@ -94,7 +94,7 @@ public class DataLoader {
         String productName = jsonObject.getString("product name");
         int listPrice = jsonObject.getInt("list price");
         int refFeePcntg = jsonObject.getInt("ref fee %");
-        pd.add(asin, category, productName, listPrice, refFeePcntg);
+        pd.add(asin, category, productName, listPrice, refFeePcntg, true);
     }
 
     // EFFECTS: parses purchase orders from JSON object and returns it
@@ -124,7 +124,7 @@ public class DataLoader {
         int orderID = jsonObject.getInt("order id");
         int qty = jsonObject.getInt("qty");
         int netCost = jsonObject.getInt("net cost");
-        po.add(asin, deliveryEta, orderID, qty, netCost);
+        po.add(asin, deliveryEta, orderID, qty, netCost, true);
     }
 
     // EFFECTS: parses product performance from JSON object and returns it
@@ -154,6 +154,6 @@ public class DataLoader {
         int qtySold = jsonObject.getInt("qtySold");
         int netRevenue = jsonObject.getInt("net revenue");
         int cpu = jsonObject.getInt("cpu");
-        pp.add(asin, orderID, qtySold, netRevenue, cpu);
+        pp.add(asin, orderID, qtySold, netRevenue, cpu, true);
     }
 }

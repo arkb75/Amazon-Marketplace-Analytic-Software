@@ -183,7 +183,7 @@ public class PPAdd extends MainMenu {
             int netRev = Integer.parseInt(nrevIn.getText());
             int cpu = Integer.parseInt(cpuIn.getText());
 
-            manageThree.add(asinThree, orderIDTwo, qtySold, netRev, cpu);
+            manageThree.add(asinThree, orderIDTwo, qtySold, netRev, cpu, false);
             error.setVisible(false);
         } catch (NumberFormatException e) {
 

@@ -11,11 +11,15 @@ import java.util.List;
 public class PurchaseOrdersList implements Writable {
 
     private List<PurchaseOrders> purchaseOrders = new ArrayList<>();
+    private EventLog eventLog = EventLog.getInstance();
 
     // MODIFIES: this
     // EFFECTS: Adds a new purchase orders object to the purchaseOrders array list, with a set of given values.
-    public void add(String asin, String deliveryETA, int orderID, int qty, int netCost) {
+    public void add(String asin, String deliveryETA, int orderID, int qty, int netCost, boolean loaded) {
         purchaseOrders.add(new PurchaseOrders(asin, deliveryETA, orderID, qty, netCost));
+        if (!loaded) {
+            eventLog.logEvent(new Event("Added purchase order to purchase orders list."));
+        }
     }
 
     // REQUIRES: index != -1
@@ -29,9 +33,11 @@ public class PurchaseOrdersList implements Writable {
         if (index != -1) {
 
             purchaseOrders.remove(index);
+            eventLog.logEvent(new Event("Removed purchase order from purchase orders list."));
             return true;
         }
 
+        eventLog.logEvent(new Event("Failed to remove purchase order from purchase orders list."));
         return false;
     }
 

@@ -16,7 +16,7 @@ class ProductDetailsListTest {
     @Test
     void testAdd() {
 
-        productDetailsList.add("test", "test1", "test2", 50, 5);
+        productDetailsList.add("test", "test1", "test2", 50, 5, false);
         assertEquals("test", productDetailsList.getProduct("test").getAsin());
     }
 
@@ -24,7 +24,7 @@ class ProductDetailsListTest {
     void testRemove() {
 
         assertFalse(productDetailsList.remove("test"));
-        productDetailsList.add("test", "test1", "test2", 50, 5);
+        productDetailsList.add("test", "test1", "test2", 50, 5, false);
         assertFalse(productDetailsList.remove("test9"));
         assertTrue(productDetailsList.remove("test"));
     }
@@ -33,7 +33,7 @@ class ProductDetailsListTest {
     void testGetProductIndex() {
 
         assertEquals(productDetailsList.getProductIndex("test"), -1);
-        productDetailsList.add("test", "test1", "test2", 50, 5);
+        productDetailsList.add("test", "test1", "test2", 50, 5, false);
         assertEquals(productDetailsList.getProductIndex("test"), 0);
         assertEquals(productDetailsList.getProductIndex("test9"), -1);
     }
@@ -41,14 +41,14 @@ class ProductDetailsListTest {
     @Test
     void testGetProduct() {
 
-        productDetailsList.add("test", "test1", "test2", 50, 5);
+        productDetailsList.add("test", "test1", "test2", 50, 5, false);
         assertEquals(productDetailsList.getProduct("test").getAsin(), "test");
     }
 
     @Test
     void testGetProductDetails() {
 
-        productDetailsList.add("test", "test1", "test2", 50, 5);
+        productDetailsList.add("test", "test1", "test2", 50, 5, false);
         assertEquals(productDetailsList.getProductDetails(), productDetailsList.getProductDetails());
     }
 

@@ -1,6 +1,7 @@
 package ui;
 
 import model.*;
+import model.Event;
 import persistence.DataLoader;
 import persistence.DataWriter;
 
@@ -10,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 public class MainMenu {
@@ -41,6 +43,7 @@ public class MainMenu {
     private JButton productDetailsButton;
     private JButton productPerformanceButton;
     private JButton purchaseOrdersButton;
+    private JButton exit;
     protected JButton load;
     protected JButton save;
     private JLabel heading;
@@ -70,10 +73,24 @@ public class MainMenu {
         panel.add(productDetailsButton);
         panel.add(productPerformanceButton);
         panel.add(purchaseOrdersButton);
+        exitButton();
         panel.add(Box.createVerticalStrut(600));
         frame.add(panel);
         frame.setBounds(100,100,700,700);
         frame.setVisible(true);
+    }
+
+    private void exitButton() {
+
+        exit = new JButton("Exit");
+
+        exit.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        exit.setMinimumSize(new Dimension(200, 25));
+        exit.setPreferredSize(new Dimension(200, 25));
+        exit.setMaximumSize(new Dimension(200, 25));
+
+        panel.add(exit);
+        exit.addActionListener(chooseSubmenu);
     }
 
     // EFFECTS: Sets elements.
@@ -121,6 +138,13 @@ public class MainMenu {
                 new SubMenuGUI("Purchase Orders");
                 frame.dispose();
             }
+            if (e.getSource().equals(exit)) {
+                Iterator<Event> iterator = EventLog.getInstance().iterator();
+                while (iterator.hasNext()) {
+                    System.out.println(iterator.next());
+                }
+                System.exit(0);
+            }
         }
     };
 
@@ -147,8 +171,6 @@ public class MainMenu {
                 manageThree = ppLoader.readProductPerformance();
                 productPerformance = manageThree.getOrderDetails();
             }
-
-            System.out.println("Loaded");
         } catch (IOException e) {
             System.out.println("Unable to read from file");
         }
@@ -168,7 +190,6 @@ public class MainMenu {
             ppWriter.open();
             ppWriter.writeProductPerformance(manageThree);
             ppWriter.close();
-            System.out.println("Saved");
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file");
         }

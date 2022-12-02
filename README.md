@@ -35,3 +35,17 @@ This project is of interest to me because it is an opportunity for me to create 
 16. Click the "Back" button to return to the submenu.
 17. Click the "Back" button to return to the main menu.
 18. You may try this with any of the submenus.
+
+## Phase 4: Task 2
+Thu Dec 01 21:10:05 PST 2022 <br />
+Added product to product details list. <br />
+Thu Dec 01 21:10:11 PST 2022 <br />
+Removed product from product details list. <br />
+Thu Dec 01 21:10:34 PST 2022 <br />
+Added product performance to product performance list. <br />
+Thu Dec 01 21:10:39 PST 2022 <br />
+Removed product performance from product performance list. <br />
+Thu Dec 01 21:11:15 PST 2022 <br />
+Added purchase order to purchase orders list. <br />
+Thu Dec 01 21:11:21 PST 2022 <br />
+Removed purchase order from purchase orders list.
