@@ -49,3 +49,9 @@ Thu Dec 01 21:11:15 PST 2022 <br />
 Added purchase order to purchase orders list. <br />
 Thu Dec 01 21:11:21 PST 2022 <br />
 Removed purchase order from purchase orders list.
+
+## Phase 4: Task 3
+Given more time I would:
+- Add more graphical functionality (e.g generating graphs).
+- Make the GUI more aesthetically pleasing and user-friendly.
+- Get rid of redundant code through better code design techniques (e.g abstraction).
