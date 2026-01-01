@@ -43,6 +43,7 @@ public class MainMenu {
     private JButton productDetailsButton;
     private JButton productPerformanceButton;
     private JButton purchaseOrdersButton;
+    private JButton salesForecastButton;
     private JButton exit;
     protected JButton load;
     protected JButton save;
@@ -62,6 +63,7 @@ public class MainMenu {
         productDetailsButton = new JButton("Product Details");
         productPerformanceButton = new JButton("Product Performance");
         purchaseOrdersButton = new JButton("Purchase Orders");
+        salesForecastButton = new JButton("Sales Forecast (ML)");
         heading = new JLabel("Main Menu");
         heading.setFont(new Font("Calibri", Font.BOLD, 35));
         heading.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -73,10 +75,11 @@ public class MainMenu {
         panel.add(productDetailsButton);
         panel.add(productPerformanceButton);
         panel.add(purchaseOrdersButton);
+        panel.add(salesForecastButton);
         exitButton();
         panel.add(Box.createVerticalStrut(600));
         frame.add(panel);
-        frame.setBounds(100,100,700,700);
+        frame.setBounds(100, 100, 700, 700);
         frame.setVisible(true);
     }
 
@@ -117,9 +120,14 @@ public class MainMenu {
         purchaseOrdersButton.setMinimumSize(new Dimension(200, 25));
         purchaseOrdersButton.setPreferredSize(new Dimension(200, 25));
         purchaseOrdersButton.setMaximumSize(new Dimension(200, 25));
+        salesForecastButton.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        salesForecastButton.setMinimumSize(new Dimension(200, 25));
+        salesForecastButton.setPreferredSize(new Dimension(200, 25));
+        salesForecastButton.setMaximumSize(new Dimension(200, 25));
         productDetailsButton.addActionListener(chooseSubmenu);
         productPerformanceButton.addActionListener(chooseSubmenu);
         purchaseOrdersButton.addActionListener(chooseSubmenu);
+        salesForecastButton.addActionListener(chooseSubmenu);
     }
 
     // EFFECTS: Handles button input.
@@ -136,6 +144,10 @@ public class MainMenu {
             }
             if (e.getSource().equals(purchaseOrdersButton)) {
                 new SubMenuGUI("Purchase Orders");
+                frame.dispose();
+            }
+            if (e.getSource().equals(salesForecastButton)) {
+                new ForecastPanel();
                 frame.dispose();
             }
             if (e.getSource().equals(exit)) {
